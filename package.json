@@ -23,6 +23,7 @@
   "homepage": "https://github.com/gacardoso/node-api-demo#readme",
   "dependencies": {
     "bookshelf": "^0.9.5",
+    "bookshelf-bcrypt": "^2.1.0",
     "bookshelf-uuid": "^1.0.0",
     "hapi": "^13.4.1",
     "knex": "^0.10.0",
