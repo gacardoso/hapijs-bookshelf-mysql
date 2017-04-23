@@ -1,0 +1,13 @@
+database:
+  image: mysql
+  container_name: mysql-demo
+  command: mysqld --user=root --verbose
+  volumes:
+   - /var/lib/mysql
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_DATABASE: "demo"
+    MYSQL_USER: "demo"
+    MYSQL_PASSWORD: "demo"
+    MYSQL_ROOT_PASSWORD: "root"
