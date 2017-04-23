@@ -13,7 +13,7 @@ server.route({
         console.log(request.payload);
         User.forge(request.payload)
         .save()
-        .then((user) => reply(user) )
+        .then((user) => reply(user), (err) => reply(err) )
     }
 });
 
