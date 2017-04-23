@@ -1,5 +1,6 @@
 'use strict';
 
+let Joi = require('joi');
 let Hapi = require('hapi');
 let User = require('./models/user')
 let server = new Hapi.Server();
@@ -14,6 +15,14 @@ server.route({
         User.forge(request.payload)
         .save()
         .then((user) => reply(user), (err) => reply(err) )
+    },
+    config:{
+        validate:{
+            payload: Joi.object({
+                email: Joi.string().email().required(),
+                password: Joi.string().required(),
+            })
+        }
     }
 });
 

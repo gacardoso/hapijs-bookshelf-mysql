@@ -26,6 +26,7 @@
     "bookshelf-bcrypt": "^2.1.0",
     "bookshelf-uuid": "^1.0.0",
     "hapi": "^13.4.1",
+    "joi": "^10.4.1",
     "knex": "^0.10.0",
     "mysql": "^2.12.0"
   },
