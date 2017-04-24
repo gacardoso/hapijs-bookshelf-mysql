@@ -6,40 +6,81 @@ let User = require('./models/user')
 let jwt = require('jsonwebtoken');
 let Boom = require('boom');
 
-let server = new Hapi.Server({
-    debug: {
-        request: ['error']
-    }
-});
+// let server = new Hapi.Server({
+//     debug: {
+//         request: ['error']
+//     }
+// });
 
+let server = new Hapi.Server();
 server.connection({ port: 3000, host: 'localhost' });
 
 const JWT_KEY = 'here be dragons';
 
 //plugin
-server.register(require('hapi-auth-jwt2'), (err) => {
+// server.register(require('hapi-auth-jwt2'), (err) => {
 
-    if (err) throw err;
+//     if (err) throw err;
 
-    function validate(jwt, request, cb) {
+//     function validate(jwt, request, cb) {
+//         User.forge({ id: jwt.id })
+//             .fetch()
+//             .then((user) => {
+//                 if (user) {
+//                     //chave pra ser usada nos controladores
+//                     cb(null, true, user.toJSON())
+//                 } else {
+//                     cb(null, false)
+//                 }
+//             })
+//             .catch((erro) => cb(err));
+//     }
+
+//     server.auth.strategy('jwt', 'jwt', {
+//         Key: JWT_KEY,
+//         validateFunc: validate
+//     })
+// })
+
+server.register(require('hapi-auth-jwt2'), function (err) {
+
+    if (err) {
+        console.log(err);
+        throw err;
+    }
+
+    let validate = function (jwt, request, cb) {
+
+        console.log(jwt.id);
+
         User.forge({ id: jwt.id })
             .fetch()
             .then((user) => {
                 if (user) {
                     //chave pra ser usada nos controladores
-                    cb(null, true, user.toObject())
+                    cb(null, true, user.toJSON())
                 } else {
                     cb(null, false)
                 }
             })
             .catch((erro) => cb(err));
-    };
+    }
 
-    server.auth.strategy('jwt', 'jwt', {
-        Key: JWT_KEY,
-        validateFunc: validate
-    });
+    server.auth.strategy('jwt', 'jwt',
+        {
+            key: JWT_KEY,          // Never Share your secret key
+            validateFunc: validate            // validate function defined above
+            //,verifyOptions: { algorithms: ['HS256'] } // pick a strong algorithm
+        });
+
+    //valida todas as rotas
+    //server.auth.default('jwt');
+
 });
+
+
+
+
 
 server.route({
     method: 'POST',

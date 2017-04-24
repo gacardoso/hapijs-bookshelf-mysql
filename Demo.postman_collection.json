@@ -200,7 +200,33 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ4Zjg1MDU4LWI4MmUtNGE4NC1iNjk2LTMxNGI5NWYxZDdiMSIsImlhdCI6MTQ5MzAwNDY4OX0.nJbcfsoY1ACuYmoSFqnoaZ9iw0XGmOiKj0aSwn-6rAA",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ4Zjg1MDU4LWI4MmUtNGE4NC1iNjk2LTMxNGI5NWYxZDdiMSIsImlhdCI6MTQ5MzAxMTYwNX0.ZkJibGaJHjUfqm14_uHFVDXUg2QIpk6shjaNY6MqC7A",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"password\":\"12345\",\"email\":\"teste02@teste\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "teste jwt passando token 02",
+			"request": {
+				"url": "http://localhost:3000/v1/sessions",
+				"method": "GET",
+				"header": [
+					{
+						"key": "//Content-Type",
+						"value": "application/json",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ4Zjg1MDU4LWI4MmUtNGE4NC1iNjk2LTMxNGI5NWYxZDdiMSIsImlhdCI6MTQ5MzAwODYyMX0.xnlZkuV8vp8VGnNc2oj6MqA9PZ7wPrFHfrRJD3D0s7I",
 						"description": ""
 					}
 				],
