@@ -1,0 +1,216 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Demo",
+		"_postman_id": "a00f57d9-fc9b-30a8-2879-85c010904d70",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"url": "http://localhost:3000/v1/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"password\":\"1234\",\"email\":\"teste@teste\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create user 2",
+			"request": {
+				"url": "http://localhost:3000/v1/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"password\":\"1234\",\"email\":\"teste01@teste\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create user existed",
+			"request": {
+				"url": "http://localhost:3000/v1/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"password\":\"1234\",\"email\":\"teste02@teste\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "email is required",
+			"request": {
+				"url": "http://localhost:3000/v1/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"password\":\"1234\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "users token",
+			"request": {
+				"url": "http://localhost:3000/v1/sessions",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"password\":\"1234\",\"email\":\"teste02@teste\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "wrong password",
+			"request": {
+				"url": "http://localhost:3000/v1/sessions",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"password\":\"12345\",\"email\":\"teste02@teste\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "password is required",
+			"request": {
+				"url": "http://localhost:3000/v1/sessions",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"teste02@teste\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "users token",
+			"request": {
+				"url": "http://localhost:3000/v1/sessions",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"password\":\"1234\",\"email\":\"teste02@teste\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "teste jwt",
+			"request": {
+				"url": "http://localhost:3000/v1/sessions",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"password\":\"1234\",\"email\":\"teste02@teste\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "teste jwt passando token",
+			"request": {
+				"url": "http://localhost:3000/v1/sessions",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ4Zjg1MDU4LWI4MmUtNGE4NC1iNjk2LTMxNGI5NWYxZDdiMSIsImlhdCI6MTQ5MzAwNDY4OX0.nJbcfsoY1ACuYmoSFqnoaZ9iw0XGmOiKj0aSwn-6rAA",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"password\":\"12345\",\"email\":\"teste02@teste\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

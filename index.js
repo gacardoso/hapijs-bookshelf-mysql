@@ -11,6 +11,31 @@ server.connection({ port: 3000, host: 'localhost' });
 
 const JWT_KEY = 'here be dragons';
 
+//plugin
+server.register(require('hapi-auth-jwt2'), (err) => {
+
+    if (err) throw err;
+
+    function validate(jwt, request, cb) {
+        User.forge({ id: jwt.id })
+            .fetch()
+            .then((user) => {
+                if (user) {
+                    //chave pra ser usada nos controladores
+                    cb(null, true, user.toObject())
+                } else {
+                    cb(null, false)
+                }
+            })
+            .catch((erro) => cb(err));
+    };
+
+    server.auth.strategy('jwt', 'jwt', {
+        Key: JWT_KEY,
+        validateFunc: validate
+    });
+});
+
 server.route({
     method: 'POST',
     path: '/v1/users',
@@ -61,6 +86,17 @@ server.route({
                 password: Joi.string().required(),
             })
         }
+    }
+});
+
+server.route({
+    method: 'GET',
+    path: '/v1/sessions',
+    handler: (request, reply) => {
+        reply(request.auth.credentials);
+    },
+    config: {
+        auth: 'jwt'
     }
 });
 
