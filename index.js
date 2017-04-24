@@ -6,7 +6,12 @@ let User = require('./models/user')
 let jwt = require('jsonwebtoken');
 let Boom = require('boom');
 
-let server = new Hapi.Server();
+let server = new Hapi.Server({
+    debug: {
+        request: ['error']
+    }
+});
+
 server.connection({ port: 3000, host: 'localhost' });
 
 const JWT_KEY = 'here be dragons';
